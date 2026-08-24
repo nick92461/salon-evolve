@@ -19,13 +19,14 @@ export default function Hero() {
 			priority
 			className="absolute hidden md:block"
 			style={{
-			top: "50%",
-			right: "10%",
-			transform: "translateY(-50%)",
-			maskImage:
-				"linear-gradient(to right, transparent, black 18%, black 82%, transparent)",
-			WebkitMaskImage:
-				"linear-gradient(to right, transparent, black 18%, black 82%, transparent)",
+				top: "50%",
+				right: "10%",
+				width: "28vw",
+				transform: "translateY(-50%)",
+				maskImage:
+					"linear-gradient(to right, transparent, black 18%, black 82%, transparent)",
+				WebkitMaskImage:
+					"linear-gradient(to right, transparent, black 18%, black 82%, transparent)",
 			}}
 		/>
 	  =
