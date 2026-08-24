@@ -19,8 +19,8 @@ export default function Hero() {
 			priority
 			className="absolute hidden md:block"
 			style={{
-				top: "50%",
-				right: "10%",
+				top: "70%",
+				right: "3%",
 				width: "28vw",
 				transform: "translateY(-50%)",
 				maskImage:
