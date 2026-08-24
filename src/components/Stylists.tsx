@@ -7,12 +7,12 @@ const STYLISTS = [
   { name: "Stephanie", specialty: "[specialty]", quote: "[a short quote from Stephanie]", image: "/stylists/stephanie_headshot.jpg" },
   { name: "Trish", specialty: "[specialty]", quote: "[a short quote from Trish]", image: "/stylists/trish_headshot.jpg" },
   { name: "Kim", specialty: "[specialty]", quote: "[a short quote from Kim]", image: "/stylists/kim_headshot.jpg" },
-  { name: "Melissa", specialty: "[specialty]", quote: "[a short quote from Melissa]", image: "/stylists/melissa_headshot.jpg" },
+  { name: "Milissa", specialty: "[specialty]", quote: "[a short quote from Melissa]", image: "/stylists/melissa_headshot.jpg" },
 ];
 
 export default function Stylists() {
   return (
-    <section id="stylists" className="scroll-mt-[76px] bg-parchment px-6 py-28 sm:px-12">
+    <section id="stylists" className="scroll-mt-[76px] bg-linen px-6 py-28 sm:px-12">
       <div className="mx-auto max-w-[1080px]">
         <motion.div
           initial={{ opacity: 0, y: 28 }}

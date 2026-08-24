@@ -10,7 +10,7 @@ const STATS = [
 
 export default function About() {
   return (
-    <section id="about" className="scroll-mt-[76px] bg-parchment px-6 py-28 sm:px-12">
+    <section id="about" className="scroll-mt-[76px] bg-linen px-6 py-28 sm:px-12">
       <div className="mx-auto grid max-w-[1080px] gap-12 md:grid-cols-[1.1fr_0.9fr]">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
