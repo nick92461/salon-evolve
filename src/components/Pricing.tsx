@@ -34,7 +34,7 @@ export default function Pricing() {
                         Explore our competitive prices.
                     </h2>
 
-                    <p className="text-taupe">
+                    <p className="text-taupe font-display">
                         Get the best value in South Jersey.
                     </p>
                 </motion.div>
@@ -68,8 +68,8 @@ export default function Pricing() {
                         </div>
                         )}
         
-                        <h3 className="font-display text-sm">{service.name}</h3>
-                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.04em] text-brass">
+                        <h3 className="font-body text-lg">{service.name}</h3>
+                        <p className="mb-3 text-xs font-body uppercase tracking-[0.04em] text-brass">
                             {service.price}
                         </p>
                         
