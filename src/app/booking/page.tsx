@@ -5,7 +5,6 @@ import { useSearchParams } from "next/navigation";
 import Stylists from "@/components/booking/Stylists";
 import Info from "@/components/booking/Info";
 import Time from "@/components/booking/Time";
-import Submit from "@/components/booking/Submit";
 
 function BookingContent() {
     const searchParams = useSearchParams();
@@ -21,8 +20,7 @@ function BookingContent() {
         <>
             <Info name={name} setName={setName} email={email} setEmail={setEmail} phone={phone} setPhone={setPhone} />
             <Stylists selectedStylist={selectedStylist} setSelectedStylist={setSelectedStylist} />
-            <Time date={date} setDate={setDate} time={time} setTime={setTime} />
-            <Submit name={name} email={email} phone={phone} stylist={selectedStylist} date={date} time={time} />
+            <Time date={date} setDate={setDate} time={time} setTime={setTime} name={name} email={email} phone={phone} selectedStylist={selectedStylist} />
         </>
         
     );
