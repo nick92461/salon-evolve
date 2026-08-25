@@ -48,7 +48,7 @@ export default function Info({ name, setName, email, setEmail, phone, setPhone }
                     </label>
                     <input
                         id="name"
-                        className="bg-parchment w-[400px]"
+                        className="bg-parchment w-full max-w-[400px]"
                         type="text"
                         autoComplete="name"
                         value={name}
@@ -61,7 +61,7 @@ export default function Info({ name, setName, email, setEmail, phone, setPhone }
                     </label>
                     <input
                         id="phone"
-                        className="bg-parchment w-[400px]"
+                        className="bg-parchment w-full max-w-[400px]"
                         type="tel"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
@@ -73,7 +73,7 @@ export default function Info({ name, setName, email, setEmail, phone, setPhone }
                     </label>
                     <input
                         id="email"
-                        className="bg-parchment w-[400px]"
+                        className="bg-parchment w-full max-w-[400px]"
                         type="email"
                         autoComplete="email"
                         value={email}
