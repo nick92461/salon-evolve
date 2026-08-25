@@ -23,7 +23,7 @@ export default function Submit({ name, email, phone, stylist, date, time }: Subm
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.7 }}
-                    className="mb-14 max-w-[640px]"
+                    className="mb-14 flex justify-center"
                 >
                     <button
                         onClick={handleSubmit}
