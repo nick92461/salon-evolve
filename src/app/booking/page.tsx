@@ -1,17 +1,20 @@
 "use client";
 
-import { useState } from "react";
-
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Stylists from "@/components/booking/Stylists";
 import Info from "@/components/booking/Info";
 import Time from "@/components/booking/Time";
 import Submit from "@/components/booking/Submit";
 
-export default function Booking() {
+function BookingContent() {
+    const searchParams = useSearchParams();
+    const stylistFromUrl = searchParams.get("stylist");
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const [selectedStylist, setSelectedStylist] = useState<string | null>(null);
+    const [selectedStylist, setSelectedStylist] = useState<string | null>(stylistFromUrl);
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     return (
@@ -23,4 +26,12 @@ export default function Booking() {
         </>
         
     );
+}
+
+export default function Booking() {
+    return (
+        <Suspense fallback={null}>
+            <BookingContent />
+        </Suspense>
+    )
 }

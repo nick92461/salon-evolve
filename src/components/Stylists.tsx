@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -11,6 +12,7 @@ const STYLISTS = [
 ];
 
 export default function Stylists() {
+  const router = useRouter();
   return (
     <section id="stylists" className="scroll-mt-[76px] bg-linen px-6 py-28 sm:px-12">
       <div className="mx-auto max-w-[1080px]">
@@ -26,7 +28,7 @@ export default function Stylists() {
           </p>
           <h2 className="mb-3 font-display text-4xl">Meet the stylists.</h2>
           <p className="text-taupe">
-            A small team, a lot of experience. Call and ask for anyone below.
+            A small team, a lot of experience. Call and ask for anyone below, or click one to start booking an appointment.
           </p>
         </motion.div>
 
@@ -38,6 +40,7 @@ export default function Stylists() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: index * 0.08 }}
+              onClick={() => router.push(`/booking?stylist=${encodeURIComponent(stylist.name)}`)}
               className="border border-ink/10 bg-parchment p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               {stylist.image ? (
