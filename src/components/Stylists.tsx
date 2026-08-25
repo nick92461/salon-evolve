@@ -15,10 +15,6 @@ const STYLISTS = [
 export default function Stylists() {
   const router = useRouter();
 
-  useEffect(() => {
-    console.log("Stylists component mounted.");
-  }, []);
-
   return (
     <section id="stylists" className="scroll-mt-[76px] bg-linen px-6 py-28 sm:px-12">
       <div className="mx-auto max-w-[1080px]">
@@ -46,7 +42,6 @@ export default function Stylists() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: index * 0.08, type:"tween" }}
-              onAnimationStart={() => console.log(`animation start: ${stylist.name}`)}
               onClick={() => router.push(`/booking?stylist=${encodeURIComponent(stylist.name)}`)}
               className="opacity-0 border border-ink/10 bg-parchment p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
@@ -57,6 +52,7 @@ export default function Stylists() {
                     alt={stylist.name}
                     fill
                     priority
+                    onLoad={() => console.log(`image loaded: ${stylist.name}`)}
                     sizes="128px"
                     className="object-cover"
                   />
