@@ -28,7 +28,7 @@ export default function Stylists() {
           </p>
           <h2 className="mb-3 font-display text-4xl">Meet the stylists.</h2>
           <p className="text-taupe">
-            A small team, a lot of experience. Call and ask for anyone below, or click one to start booking an appointment.
+            A small team, a lot of experience. Call and ask for anyone below, or click to start booking an appointment.
           </p>
         </motion.div>
 
@@ -49,6 +49,7 @@ export default function Stylists() {
                     src={stylist.image}
                     alt={stylist.name}
                     fill
+                    sizes="128px"
                     className="object-cover"
                   />
                 </div>
