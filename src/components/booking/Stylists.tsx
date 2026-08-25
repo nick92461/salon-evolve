@@ -9,6 +9,7 @@ const STYLISTS = [
   { name: "Trish", specialty: "[specialty]", quote: "[a short quote from Trish]", image: "/stylists/trish_headshot.jpg" },
   { name: "Kim", specialty: "[specialty]", quote: "[a short quote from Kim]", image: "/stylists/kim_headshot.jpg" },
   { name: "Milissa", specialty: "[specialty]", quote: "[a short quote from Melissa]", image: "/stylists/melissa_headshot.jpg" },
+  { name: "Anyone", quote: "Can't decide? See all availability regardless of stylist."}
 ];
 
 type StylistsProps = {
@@ -50,7 +51,7 @@ export default function Stylists({ selectedStylist, setSelectedStylist }: Stylis
                     : "border-ink/10"
                 }`}
               >
-                {stylist.image ? (
+                {stylist.image && (
                   <div className="relative mb-5 h-32 w-32 overflow-hidden rounded-full">
                     <Image
                       src={stylist.image}
@@ -59,10 +60,6 @@ export default function Stylists({ selectedStylist, setSelectedStylist }: Stylis
                       className="object-cover"
                     />
                   </div>
-                ) : (
-                  <div className="mb-5 flex h-32 w-32 items-center justify-center rounded-full bg-ink font-display text-3xl text-brass-light">
-                    {stylist.name.charAt(0)}
-                  </div>
                 )}
 
                 <h3 className="font-display text-xl">{stylist.name}</h3>
@@ -70,7 +67,7 @@ export default function Stylists({ selectedStylist, setSelectedStylist }: Stylis
                   {stylist.specialty}
                 </p>
                 <p className="text-sm italic text-taupe">
-                  &ldquo;{stylist.quote}&rdquo;
+                  {stylist.quote}
                 </p>
               </motion.div>
           );
