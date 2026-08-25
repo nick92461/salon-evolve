@@ -41,7 +41,7 @@ export default function Stylists() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: index * 0.08 }}
               onClick={() => router.push(`/booking?stylist=${encodeURIComponent(stylist.name)}`)}
-              className="border border-ink/10 bg-parchment p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="opacity-0 border border-ink/10 bg-parchment p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               {stylist.image ? (
                 <div className="relative mb-5 h-32 w-32 overflow-hidden rounded-full">
