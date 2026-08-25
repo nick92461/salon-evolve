@@ -19,7 +19,7 @@ export default function About() {
           transition={{ duration: 0.7 }}
         >
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-brass">
-            About
+            About Us
           </p>
           <h2 className="mb-5 font-display text-4xl">
             A neighborhood salon, still growing.

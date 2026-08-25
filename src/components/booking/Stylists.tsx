@@ -1,0 +1,82 @@
+"use client";
+
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+const STYLISTS = [
+  { name: "Stephanie", specialty: "[specialty]", quote: "[a short quote from Stephanie]", image: "/stylists/stephanie_headshot.jpg" },
+  { name: "Trish", specialty: "[specialty]", quote: "[a short quote from Trish]", image: "/stylists/trish_headshot.jpg" },
+  { name: "Kim", specialty: "[specialty]", quote: "[a short quote from Kim]", image: "/stylists/kim_headshot.jpg" },
+  { name: "Milissa", specialty: "[specialty]", quote: "[a short quote from Melissa]", image: "/stylists/melissa_headshot.jpg" },
+];
+
+type StylistsProps = {
+  selectedStylist: string | null;
+  setSelectedStylist: React.Dispatch<React.SetStateAction<string | null>>;
+};
+
+export default function Stylists({ selectedStylist, setSelectedStylist }: StylistsProps) {
+
+
+  return (
+    <section id="stylists" className="scroll-mt-[76px] bg-parchment px-6 py-28 sm:px-12">
+      <div className="mx-auto max-w-[1080px]">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}
+          className="mb-14 max-w-[640px]"
+        >
+          <h2 className="mb-3 font-display text-4xl">Pick your stylist.</h2>
+
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {STYLISTS.map((stylist, index) => {
+            return (
+              <motion.div
+                key={stylist.name}
+                onClick={() => setSelectedStylist(stylist.name)}
+                whileTap={{ scale: 0.97 }}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.08 }}
+                className={`cursor-pointer border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                  stylist.name === selectedStylist
+                    ? "-translate-y-1 border-brass shadow-lg"
+                    : "border-ink/10"
+                }`}
+              >
+                {stylist.image ? (
+                  <div className="relative mb-5 h-32 w-32 overflow-hidden rounded-full">
+                    <Image
+                      src={stylist.image}
+                      alt={stylist.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="mb-5 flex h-32 w-32 items-center justify-center rounded-full bg-ink font-display text-3xl text-brass-light">
+                    {stylist.name.charAt(0)}
+                  </div>
+                )}
+
+                <h3 className="font-display text-xl">{stylist.name}</h3>
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.04em] text-brass">
+                  {stylist.specialty}
+                </p>
+                <p className="text-sm italic text-taupe">
+                  &ldquo;{stylist.quote}&rdquo;
+                </p>
+              </motion.div>
+          );
+        })}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import heroPhoto from "../../public/hero/group_hero.jpg";
+import Link from "next/link";
 
 const PHONE_HREF = "tel:+16093909220";
 
@@ -67,12 +68,12 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.64 }}
           className="mt-10 flex flex-wrap gap-4"
         >
-          <a
-            href={PHONE_HREF}
+          <Link
+            href="/booking"
             className="rounded-sm bg-brass px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-brass-light"
           >
-            Call to Book →
-          </a>
+            Request an Appointment →
+          </Link>
           <a
             href="#stylists"
             className="rounded-sm border border-parchment/50 px-6 py-3 text-sm font-semibold text-parchment transition-colors hover:border-parchment"

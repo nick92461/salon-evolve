@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const NAV_LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#stylists", label: "Stylists" },
-  { href: "#visit", label: "Visit" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#stylists", label: "Stylists" },
+  { href: "/#visit", label: "Visit" },
+  { href: "/booking", label: "Book" }
 ];
 
 const PHONE = "(609) 390-9220";
@@ -31,7 +33,7 @@ export default function Nav() {
       }`}
     >
       <a
-        href="#top"
+        href="/"
         className={`font-display text-xl transition-colors duration-300 ${
           scrolled ? "text-ink" : "text-parchment"
         }`}
@@ -42,7 +44,7 @@ export default function Nav() {
       <div className="flex items-center gap-8">
         <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className={`text-sm transition-colors duration-300 ${
@@ -50,7 +52,7 @@ export default function Nav() {
               }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
