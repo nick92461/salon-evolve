@@ -57,6 +57,7 @@ export default function Stylists({ selectedStylist, setSelectedStylist }: Stylis
                       src={stylist.image}
                       alt={stylist.name}
                       fill
+                      sizes="128px"
                       className="object-cover"
                     />
                   </div>

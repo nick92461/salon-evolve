@@ -18,21 +18,21 @@ type InfoProps = {
 export default function Info({ name, setName, email, setEmail, phone, setPhone }: InfoProps) {
 
     return (
-    <section id="info" className="scroll-mt-[76px] bg-linen px-6 py-28 sm:px-12">
-        <div className="mx-auto max-w-[1080px]">
-        <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
-            className="mb-14 max-w-[640px]"
-        >
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-brass">
-                Request an appointment
-            </p>
-            <h2 className="mb-3 font-display text-4xl">Provide your contact info so we can reach you</h2>
+    <section id="info" className="scroll-mt-[76px] bg-ink px-6 py-28 sm:px-12">
+        <div className="mx-auto max-w-[1080px] text-linen">
+            <motion.div
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.7 }}
+                className="mb-14 max-w-[640px]"
+            >
+                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-brass">
+                    Request an appointment
+                </p>
+                <h2 className="mb-3 font-display text-4xl">Provide your contact info so we can reach you</h2>
 
-        </motion.div>
+            </motion.div>
         </div>
         <div className="mx-auto max-w-[1080px]">
             <motion.div
