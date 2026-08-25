@@ -1,36 +1,52 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import heroPhoto from "../../public/hero/group_hero.jpg";
 import Link from "next/link";
 
-const PHONE_HREF = "tel:+16093909220";
 
 export default function Hero() {
+  const[imageLoaded, setImageLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setImageLoaded(true);
+    }
+  }, []);
+
   return (
     <header
       id="top"
       className="relative flex min-h-screen items-center bg-ink pt-[76px] text-parchment"
     >
-
-		<Image
-			src={heroPhoto}
-			alt=""
-			priority
-			className="absolute hidden md:block"
-			style={{
-				top: "70%",
-				right: "3%",
-				width: "28vw",
-				transform: "translateY(-50%)",
-				maskImage:
-					"linear-gradient(to right, transparent, black 18%, black 82%, transparent)",
-				WebkitMaskImage:
-					"linear-gradient(to right, transparent, black 18%, black 82%, transparent)",
-			}}
-		/>
-	  =
+      <motion.div
+        initial={{ opacity: 0, x: -500 }}
+        animate={imageLoaded ? { opacity: 1, x: 0 } : undefined}
+        transition={{ duration: 0.8 }}
+        className="absolute hidden md:block"
+        style={{
+          top: "55%",
+          right: "3%",
+          width: "28vw",
+          transform: "translateY(-50%)",
+          maskImage:
+            "linear-gradient(to right, transparent, black 18%, black 82%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 18%, black 82%, transparent)",
+        }}
+      >
+        <Image
+          ref={imgRef}
+          src={heroPhoto}
+          alt=""
+          priority
+          onLoad={() => setImageLoaded(true)}
+          style={{ width: "100%", height: "auto" }}
+        />
+      </motion.div>
       
       <div className="relative z-10 mx-auto w-full max-w-[1080px] px-6 sm:px-12">
         <motion.p
