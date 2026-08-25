@@ -19,13 +19,13 @@ export default function Info({ name, setName, email, setEmail, phone, setPhone }
 
     return (
     <section id="info" className="scroll-mt-[76px] bg-ink px-6 py-28 sm:px-12">
-        <div className="mx-auto max-w-[1080px] text-linen">
+        <div className="mx-auto max-w-[1080px]">
             <motion.div
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.7 }}
-                className="mb-14 max-w-[640px]"
+                className="mb-14 max-w-[640px] text-linen"
             >
                 <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-brass">
                     Request an appointment
@@ -43,7 +43,7 @@ export default function Info({ name, setName, email, setEmail, phone, setPhone }
                 className="mb-14 max-w-[640px]"
             >
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="w-24 text-sm text-ink pr-2">
+                    <label htmlFor="name" className="w-24 text-sm text-linen pr-2">
                         Name:
                     </label>
                     <input
@@ -56,7 +56,7 @@ export default function Info({ name, setName, email, setEmail, phone, setPhone }
                         placeholder="Enter your name"
                     />
 
-                    <label htmlFor="phone" className="w-24 text-sm text-ink pr-2">
+                    <label htmlFor="phone" className="w-24 text-sm text-linen pr-2">
                         Phone:
                     </label>
                     <input
@@ -68,7 +68,7 @@ export default function Info({ name, setName, email, setEmail, phone, setPhone }
                         placeholder="Enter your phone number"
                     />
 
-                    <label htmlFor="email" className="w-24 text-sm text-ink pr-2">
+                    <label htmlFor="email" className="w-24 text-sm text-linen pr-2">
                         Email:
                     </label>
                     <input
