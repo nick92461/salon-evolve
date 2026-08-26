@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -14,6 +14,11 @@ const STYLISTS = [
 
 export default function Stylists() {
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <section id="stylists" className="scroll-mt-[76px] bg-linen px-6 py-28 sm:px-12">
@@ -37,14 +42,14 @@ export default function Stylists() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {STYLISTS.map((stylist, index) => (
             <motion.div
-              key={stylist.name}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: index * 0.08 }}
-              onClick={() => router.push(`/booking?stylist=${encodeURIComponent(stylist.name)}`)}
-              className="opacity-0 border border-ink/10 bg-parchment p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-            >
+            key={stylist.name}
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={mounted ? { opacity: 1, y: 0 } : undefined}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: index * 0.08 }}
+            onClick={() => router.push(`/booking?stylist=${encodeURIComponent(stylist.name)}`)}
+            className="border border-ink/10 bg-parchment p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
               {stylist.image ? (
                 <div className="relative mb-5 h-32 w-32 overflow-hidden rounded-full">
                   <Image
