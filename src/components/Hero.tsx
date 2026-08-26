@@ -64,7 +64,7 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.28 }}
           className="mt-4 max-w-[14ch] font-display text-5xl leading-[1.05] sm:text-6xl lg:text-7xl"
         >
-          Styled for who you&apos;re becoming.
+          Your hair is our passion.
         </motion.h1>
 
         <motion.p

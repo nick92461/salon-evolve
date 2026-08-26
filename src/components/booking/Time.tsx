@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 type TimeProps = {
     date: string;
@@ -19,6 +20,8 @@ export default function Time({ time, setTime, date, setDate, name, email, phone,
     function handleSubmit() {
         window.alert(`${name} is requesting an appointment with ${selectedStylist} on ${date} at ${time}.\nEmail: ${email}\nPhone: ${phone}`)
     }
+
+    const rosyUrl = "https://online.rosysalonsoftware.com/onlineBooking?id=38537";
 
     return (
     <section id="time" className="scroll-mt-[76px] bg-linen px-6 py-28 sm:px-12">
@@ -82,6 +85,7 @@ export default function Time({ time, setTime, date, setDate, name, email, phone,
                         Submit Request
                     </button>
                 </motion.div>
+                
         </div>
     </section>
     );

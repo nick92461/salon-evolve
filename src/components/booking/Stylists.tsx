@@ -30,7 +30,7 @@ export default function Stylists({ selectedStylist, setSelectedStylist }: Stylis
           transition={{ duration: 0.7 }}
           className="mb-14 max-w-[640px]"
         >
-          <h2 className="mb-3 font-display text-4xl">Pick your stylist.</h2>
+          <h2 className="mb-3 font-display text-4xl">Pick a stylist</h2>
 
         </motion.div>
 
