@@ -57,7 +57,6 @@ export default function Stylists() {
                     alt={stylist.name}
                     fill
                     priority
-                    onLoad={() => console.log(`image loaded: ${stylist.name}`)}
                     sizes="128px"
                     className="object-cover"
                   />
