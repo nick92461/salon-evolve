@@ -21,7 +21,15 @@ export default function Time({ time, setTime, date, setDate, name, email, phone,
     function handleSubmit() {
         const stylistDisplay = selectedStylist || "no stylist selected";
         const serviceDisplay = selectedService || "no service selected";
-        window.alert(`Name: ${name}\nStylist: ${stylistDisplay}\nDate: ${date}\nTime: ${time}\nService: ${serviceDisplay}\nEmail: ${email}\nPhone: ${phone}`)
+        const timeDisplay = formatTime(time) || "no time was selected";
+        window.alert(`Name: ${name}\nStylist: ${stylistDisplay}\nDate: ${date}\nTime: ${timeDisplay}\nService: ${serviceDisplay}\nEmail: ${email}\nPhone: ${phone}`)
+    }
+
+    function formatTime(time24: string) {
+        const [hours, minutes] = time24.split(":");
+        const date = new Date();
+        date.setHours(Number(hours), Number(minutes));
+        return date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit", hour12: true });
     }
 
     return (
