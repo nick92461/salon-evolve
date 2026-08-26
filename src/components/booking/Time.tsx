@@ -12,16 +12,17 @@ type TimeProps = {
     email: string;
     phone: string;
     selectedStylist: string | null;
+    selectedService: string | null;
 }
 
 
 
-export default function Time({ time, setTime, date, setDate, name, email, phone, selectedStylist, }: TimeProps) {
+export default function Time({ time, setTime, date, setDate, name, email, phone, selectedStylist, selectedService }: TimeProps) {
     function handleSubmit() {
-        window.alert(`${name} is requesting an appointment with ${selectedStylist} on ${date} at ${time}.\nEmail: ${email}\nPhone: ${phone}`)
+        const stylistDisplay = selectedStylist || "no stylist selected";
+        const serviceDisplay = selectedService || "no service selected";
+        window.alert(`Name: ${name}\nStylist: ${stylistDisplay}\nDate: ${date}\nTime: ${time}\nService: ${serviceDisplay}\nEmail: ${email}\nPhone: ${phone}`)
     }
-
-    const rosyUrl = "https://online.rosysalonsoftware.com/onlineBooking?id=38537";
 
     return (
     <section id="time" className="scroll-mt-[76px] bg-linen px-6 py-28 sm:px-12">

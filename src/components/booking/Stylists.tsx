@@ -9,7 +9,6 @@ const STYLISTS = [
   { name: "Trish", specialty: "[specialty]", quote: "[a short quote from Trish]", image: "/stylists/trish_headshot.jpg" },
   { name: "Kim", specialty: "[specialty]", quote: "[a short quote from Kim]", image: "/stylists/kim_headshot.jpg" },
   { name: "Milissa", specialty: "[specialty]", quote: "[a short quote from Melissa]", image: "/stylists/melissa_headshot.jpg" },
-  { name: "Anyone", quote: "Can't decide? See all availability regardless of stylist."}
 ];
 
 type StylistsProps = {
@@ -21,7 +20,7 @@ export default function Stylists({ selectedStylist, setSelectedStylist }: Stylis
 
 
   return (
-    <section id="stylists" className="scroll-mt-[76px] bg-parchment px-6 py-28 sm:px-12">
+    <section id="stylists" className="scroll-mt-[76px] bg-linen px-6 py-28 sm:px-12">
       <div className="mx-auto max-w-[1080px]">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
