@@ -17,7 +17,7 @@ export default function CareersSection() {
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-brass">
             Join the Team
           </p>
-          <h2 className="mb-3 font-display text-4xl">Interested in joining the team? Click below fill out an application!</h2>
+          <h2 className="mb-3 font-display text-4xl">Interested in joining the team? Click below to fill out an application</h2>
         </motion.div>
         <motion.div
             initial={{ opacity: 0, y: 28 }}
