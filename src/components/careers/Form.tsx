@@ -103,6 +103,14 @@ export default function Form() {
                             className="sr-only"
                             required
                         />
+                        <input
+                            type="text"
+                            name="company"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            className="absolute left-[-9999px]"
+                            aria-hidden="true"
+                        />
                         
                         
                     </div>
