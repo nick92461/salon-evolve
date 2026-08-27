@@ -124,7 +124,7 @@ export default function Form() {
                             type="submit"
                             className="border border-ink/20 bg-brass px-8 py-3 font-semibold text-ink transition-colors hover:bg-brass-light"
                         >
-                            Submit Request
+                            Submit Application
                         </button>
                     </motion.div>
                 </motion.form>

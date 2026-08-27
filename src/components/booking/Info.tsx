@@ -1,21 +1,10 @@
 "use client";
 
-
-
-import Image from "next/image";
 import { motion } from "framer-motion";
 
-type InfoProps = {
-    name: string;
-    setName: React.Dispatch<React.SetStateAction<string>>;
-    email: string;
-    setEmail: React.Dispatch<React.SetStateAction<string>>;
-    phone: string;
-    setPhone: React.Dispatch<React.SetStateAction<string>>;
-}
 
 
-export default function Info({ name, setName, email, setEmail, phone, setPhone }: InfoProps) {
+export default function Info() {
 
     return (
     <section id="info" className="scroll-mt-[76px] bg-ink px-6 py-28 sm:px-12">
@@ -48,12 +37,12 @@ export default function Info({ name, setName, email, setEmail, phone, setPhone }
                     </label>
                     <input
                         id="name"
+                        name="name"
                         className="bg-parchment w-full max-w-[400px]"
                         type="text"
                         autoComplete="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
                         placeholder="Enter your name"
+                        required
                     />
 
                     <label htmlFor="phone" className="w-24 text-sm text-linen pr-2">
@@ -61,11 +50,11 @@ export default function Info({ name, setName, email, setEmail, phone, setPhone }
                     </label>
                     <input
                         id="phone"
+                        name="phone"
                         className="bg-parchment w-full max-w-[400px]"
                         type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
                         placeholder="Enter your phone number"
+                        required
                     />
 
                     <label htmlFor="email" className="w-24 text-sm text-linen pr-2">
@@ -73,12 +62,12 @@ export default function Info({ name, setName, email, setEmail, phone, setPhone }
                     </label>
                     <input
                         id="email"
+                        name="email"
                         className="bg-parchment w-full max-w-[400px]"
                         type="email"
                         autoComplete="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
+                        required
                     />
                 </div>
             </motion.div>

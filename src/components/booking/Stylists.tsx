@@ -34,6 +34,8 @@ export default function Stylists({ selectedStylist, setSelectedStylist }: Stylis
         </motion.div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <input type="hidden" name="stylist" value={selectedStylist ?? ""} />
+          
           {STYLISTS.map((stylist, index) => {
             return (
               <motion.div

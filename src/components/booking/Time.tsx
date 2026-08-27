@@ -1,37 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 
-type TimeProps = {
-    date: string;
-    setDate: React.Dispatch<React.SetStateAction<string>>;
-    time: string;
-    setTime: React.Dispatch<React.SetStateAction<string>>;
-    name: string;
-    email: string;
-    phone: string;
-    selectedStylist: string | null;
-    selectedService: string | null;
-}
-
-
-
-export default function Time({ time, setTime, date, setDate, name, email, phone, selectedStylist, selectedService }: TimeProps) {
-    function handleSubmit() {
-        const stylistDisplay = selectedStylist || "no stylist selected";
-        const serviceDisplay = selectedService || "no service selected";
-        const timeDisplay = formatTime(time) || "no time was selected";
-        window.alert(`Name: ${name}\nStylist: ${stylistDisplay}\nDate: ${date}\nTime: ${timeDisplay}\nService: ${serviceDisplay}\nEmail: ${email}\nPhone: ${phone}`)
-    }
-
-    function formatTime(time24: string) {
-        const [hours, minutes] = time24.split(":");
-        const date = new Date();
-        date.setHours(Number(hours), Number(minutes));
-        return date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit", hour12: true });
-    }
-
+export default function Time() {
     return (
     <section id="time" className="scroll-mt-[76px] bg-linen px-6 py-28 sm:px-12">
         <div className="mx-auto max-w-[1080px]">
@@ -61,10 +32,10 @@ export default function Time({ time, setTime, date, setDate, name, email, phone,
                     </label>
                     <input
                         id="date"
+                        name="date"
                         type="date"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                        className="bg-parchment w-[200px]"
+                        className="bg-parchment max-w-[200px]"
+                        required
                     />
 
                     <label htmlFor="time" className="text-sm text-ink">
@@ -72,29 +43,29 @@ export default function Time({ time, setTime, date, setDate, name, email, phone,
                     </label>
                     <input
                         id="time"
+                        name="time"
                         type="time"
                         step="1800"
-                        value={time}
-                        onChange={(e) => setTime(e.target.value)}
-                        className="bg-parchment w-[200px]"
+                        className="bg-parchment w-full max-w-[200px]"
+                        required
                     />
                 </div>
-            </motion.div>
+                
+            </motion.div>    
             <motion.div
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.7 }}
-                className="mx-auto max-w-[1080px] mt-30 mb-14 flex justify-center"
+                className="mt-30 mb-14 flex justify-center"
             >
                 <button
-                    onClick={handleSubmit}
+                    type="submit"
                     className="border border-ink/20 bg-brass px-8 py-3 font-semibold text-ink transition-colors hover:bg-brass-light"
                 >
                     Submit Request
                 </button>
             </motion.div>
-                
         </div>
     </section>
     );

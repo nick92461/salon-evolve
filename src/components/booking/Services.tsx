@@ -34,6 +34,7 @@ export default function Services({ selectedService, setSelectedService }: Servic
                     <h2 className="mb-3 font-display text-4xl">Which service would you like to book?</h2>
                 </motion.div>
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    <input type="hidden" name="stylist" value={selectedService ?? ""} />
                     {SERVICES.map((service, index) => {
                         return (
                             <motion.div
