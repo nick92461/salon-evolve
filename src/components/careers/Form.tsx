@@ -1,12 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
 
 export default function Form() {
-    const [name, setName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
+    async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        await fetch("/api/careers", {
+            method: "POST",
+            body: formData
+        })
+    }
 
     return (
         <section id="form" className="scroll-mt-[76px] bg-linen px-6 py-28 sm:px-12">
@@ -24,7 +28,8 @@ export default function Form() {
                 </motion.div>
             </div>
             <div className="mx-auto max-w-[1080px]">
-                <motion.div
+                <motion.form
+                    onSubmit={handleSubmit}
                     initial={{ opacity: 0, y: 28 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
@@ -37,12 +42,12 @@ export default function Form() {
                         </label>
                         <input
                             id="name"
+                            name="name"
                             className="bg-parchment w-full max-w-[400px]"
                             type="text"
                             autoComplete="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
                             placeholder="Enter your name"
+                            required
                         />
 
                         <label htmlFor="phone" className="w-24 text-sm pr-2">
@@ -50,11 +55,12 @@ export default function Form() {
                         </label>
                         <input
                             id="phone"
+                            name="phone"
                             className="bg-parchment w-full max-w-[400px]"
                             type="tel"
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
+                            autoComplete="tel"
                             placeholder="Enter your phone number"
+                            required
                         />
 
                         <label htmlFor="email" className="w-24 text-sm pr-2">
@@ -62,25 +68,32 @@ export default function Form() {
                         </label>
                         <input
                             id="email"
+                            name="email"
                             className="bg-parchment w-full max-w-[400px]"
                             type="email"
                             autoComplete="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your email"
+                            required
                         />
                         <label htmlFor="resume" className="w-24 text-sm pr-2">
                             Resume:
                         </label>
                         <input
                             id="resume"
-                            type="file"
                             name="resume"
+                            type="file"
                             accept=".pdf"
                             className="bg-parchment w-full max-w-[400px]"
+                            required
                         />
+                        <button
+                            type="submit"
+                            className="mt-10 border border-ink/20 bg-brass px-8 py-3 font-semibold text-ink transition-colors hover:bg-brass-light"
+                        >
+                            Submit Application
+                        </button>
                     </div>
-                </motion.div>
+                </motion.form>
         </div>
         </section>
     )
