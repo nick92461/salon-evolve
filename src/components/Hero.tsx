@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <header
       id="top"
-      className="relative flex min-h-screen items-center bg-ink pt-[76px] text-parchment"
+      className="relative flex min-h-screen items-center bg-ink text-parchment"
     >
       <motion.div
         initial={{ opacity: 0, x: -500 }}
@@ -96,6 +96,7 @@ export default function Hero() {
           >
             Meet the Stylists
           </a>
+          
         </motion.div>
       </div>
     </header>

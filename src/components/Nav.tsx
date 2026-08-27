@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -9,35 +8,32 @@ const NAV_LINKS = [
   { href: "/#pricing", label: "Pricing" },
   { href: "/#stylists", label: "Stylists" },
   { href: "/#visit", label: "Visit" },
-  { href: "/booking", label: "Book" }
+  { href: "/booking", label: "Book" },
+  { href: "/careers", label: "Careers" }
 ];
 
 const PHONE = "(609) 390-9220";
 const PHONE_HREF = "tel:+16093909220";
 
 export default function Nav() {
+  /*
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+      const onScroll = () => setScrolled(window.scrollY > 40);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+  */
 
   return (
     <nav
-      className={`fixed inset-x-0 top-0 z-50 flex h-[76px] items-center justify-between px-6 transition-colors duration-300 sm:px-12 ${
-        scrolled
-          ? "bg-parchment/90 backdrop-blur-md border-b border-ink/10"
-          : "bg-transparent border-b border-transparent"
-      }`}
+      className="fixed inset-x-0 top-0 z-50 flex h-[76px] items-center justify-between px-6 duration-300 sm:px-12 bg-linen"
     >
       <a
         href="/"
-        className={`font-display text-xl transition-colors duration-300 ${
-          scrolled ? "text-ink" : "text-parchment"
-        }`}
+        className={`font-display text-xl duration-300 text-ink`}
       >
         Salon Evolve
       </a>
@@ -48,9 +44,7 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm transition-colors duration-300 ${
-                scrolled ? "text-ink" : "text-parchment"
-              }`}
+              className="text-sm duration-300 text-ink"
             >
               {link.label}
             </Link>
@@ -59,11 +53,7 @@ export default function Nav() {
 
         <a
           href={PHONE_HREF}
-          className={`rounded-sm border px-5 py-2.5 text-sm font-semibold transition-colors duration-300 ${
-            scrolled
-              ? "border-ink/30 text-ink hover:border-ink"
-              : "border-parchment/50 text-parchment hover:border-parchment"
-          }`}
+          className="rounded-sm border px-5 py-2.5 text-sm font-semibold duration-300 text-ink"
         >
           {PHONE}
         </a>
