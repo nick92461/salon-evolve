@@ -96,6 +96,13 @@ export default function Hero() {
           >
             Meet the Stylists
           </a>
+
+          <Link
+            href="/careers"
+            className="rounded-sm border border-parchment/50 px-6 py-3 text-sm font-semibold text-parchment transition-colors hover:border-parchment"
+          >
+            Careers
+          </Link>
           
         </motion.div>
       </div>
