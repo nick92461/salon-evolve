@@ -1,8 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Form() {
+    const [resumeFileName, setResumeFileName] = useState<string | null>(null);
+
     async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -10,6 +13,10 @@ export default function Form() {
             method: "POST",
             body: formData
         })
+    }
+
+    function confirmSubmission() {
+        window.alert("Your application has been submitted!");
     }
 
     return (
@@ -78,23 +85,40 @@ export default function Form() {
                         <label htmlFor="resume" className="w-24 text-sm pr-2">
                             Resume:
                         </label>
+                        <label 
+                            htmlFor="resume" 
+                            className="block w-full max-w-[400px] cursor-pointer border border-dashed border-ink/30 bg-parchment px-4 py-6 text-center text-sm text-ink trainsition-colors hover:border-brass hover:bg-brass-light"
+                        >
+                            {resumeFileName ?? "Click to upload your resume (PDF)"}
+                        </label>
                         <input
                             id="resume"
                             name="resume"
                             type="file"
                             accept=".pdf"
-                            className="bg-parchment w-full max-w-[400px]"
+                            onChange={(e) => setResumeFileName(e.target.files?.[0]?.name ?? null)}
+                            className="sr-only"
                             required
                         />
-                        <button
-                            type="submit"
-                            className="mt-10 border border-ink/20 bg-brass px-8 py-3 font-semibold text-ink transition-colors hover:bg-brass-light"
-                        >
-                            Submit Application
-                        </button>
+                        
                     </div>
                 </motion.form>
-        </div>
+                <motion.div
+                    initial={{ opacity: 0, y: 28 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.7 }}
+                    className="mx-auto max-w-[1080px] mt-30 mb-14 flex justify-center"
+                >
+                    <button
+                        type="submit"
+                        onClick={confirmSubmission}
+                        className="border border-ink/20 bg-brass px-8 py-3 font-semibold text-ink transition-colors hover:bg-brass-light"
+                    >
+                        Submit Request
+                    </button>
+                </motion.div>
+            </div>
         </section>
     )
 }

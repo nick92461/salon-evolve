@@ -15,7 +15,7 @@ export default function Hero() {
                     transition={{ duration: 0.9, delay: 0.28 }}
                     className="mt-4 max-w-[14ch] font-display text-5xl leading-[1.05] sm:text-6xl lg:text-7xl"
                 >
-                    Looking for a new job?
+                    Want to join the team?
                 </motion.h1>
 
                 <motion.p
