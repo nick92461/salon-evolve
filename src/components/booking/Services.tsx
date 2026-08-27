@@ -41,15 +41,17 @@ export default function Services({ selectedService, setSelectedService }: Servic
                             key={service.name}
                             onClick={() => setSelectedService(service.name)}
                             whileTap={{ scale: 0.97 }}
+                            whileHover={{ y: -4 }}
                             initial={{ opacity: 0, y: 28 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ duration: 0.6, delay: index * 0.08 }}
-                            className={`cursor-pointer border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                            className={`cursor-pointer border p-6 transition-shadow duration-300 hover:shadow-lg ${
                                 service.name === selectedService
                                 ? "-translate-y-1 border-brass shadow-lg"
                                 : "border-ink/10"
                             }`}
+                            animate={service.name === selectedService ? { y: -4} : { y: 0 }}
                             >
                                 {service.image && (
                                     <div className="relative mb-5 h-32 w-32 overflow-hidden rounded-full">
