@@ -47,7 +47,7 @@ export default function Stylists({ selectedStylist, setSelectedStylist }: Stylis
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: index * 0.08 }}
-                className={`cursor-pointer border p-6 duration-300 hover:shadow-lg ${
+                className={`cursor-pointer border p-6 transition-shadow duration-300 hover:shadow-lg ${
                   stylist.name === selectedStylist
                     ? "border-brass shadow-lg"
                     : "border-ink/10"
