@@ -35,22 +35,24 @@ export default function Stylists({ selectedStylist, setSelectedStylist }: Stylis
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <input type="hidden" name="stylist" value={selectedStylist ?? ""} />
-          
+
           {STYLISTS.map((stylist, index) => {
             return (
               <motion.div
                 key={stylist.name}
                 onClick={() => setSelectedStylist(stylist.name)}
                 whileTap={{ scale: 0.97 }}
+                whileHover={{ y: -4 }}
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: index * 0.08 }}
-                className={`cursor-pointer border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                className={`cursor-pointer border p-6 duration-300 hover:shadow-lg ${
                   stylist.name === selectedStylist
-                    ? "-translate-y-1 border-brass shadow-lg"
+                    ? "border-brass shadow-lg"
                     : "border-ink/10"
                 }`}
+                animate={stylist.name === selectedStylist ? { y: -4} : { y: 0 }}
               >
                 {stylist.image && (
                   <div className="relative mb-5 h-32 w-32 overflow-hidden rounded-full">
