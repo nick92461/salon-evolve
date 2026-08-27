@@ -27,14 +27,10 @@ export default function CareersSection() {
             className="mx-auto max-w-[1080px] mt-30 mb-14 flex justify-center"
         >
             <Link
-                key="/careers"
                 href="/careers"
+                className="border border-ink/20 bg-brass px-8 py-3 font-semibold text-ink transition-colors hover:bg-brass-light"
             >
-                <button
-                    className="border border-ink/20 bg-brass px-8 py-3 font-semibold text-ink transition-colors hover:bg-brass-light"
-                >
-                    Fill out an application
-                </button>
+                Fill out an application
             </Link>
         </motion.div>
       </div>

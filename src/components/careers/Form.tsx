@@ -9,10 +9,13 @@ export default function Form() {
     async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        await fetch("/api/careers", {
+        const response = await fetch("/api/careers", {
             method: "POST",
             body: formData
-        })
+        });
+        if (response.ok) {
+            window.alert("Your application has been submitted!");
+        }
     }
 
     function confirmSubmission() {
@@ -41,9 +44,9 @@ export default function Form() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.7 }}
-                    className="mb-14 max-w-[640px]"
+                    
                 >
-                    <div className="flex flex-col gap-2 text-ink">
+                    <div className="flex flex-col gap-2 text-ink mb-14 max-w-[640px]">
                         <label htmlFor="name" className="w-24 text-sm pr-2">
                             Name:
                         </label>
@@ -101,23 +104,24 @@ export default function Form() {
                             required
                         />
                         
+                        
                     </div>
-                </motion.form>
-                <motion.div
-                    initial={{ opacity: 0, y: 28 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.7 }}
-                    className="mx-auto max-w-[1080px] mt-30 mb-14 flex justify-center"
-                >
-                    <button
-                        type="submit"
-                        onClick={confirmSubmission}
-                        className="border border-ink/20 bg-brass px-8 py-3 font-semibold text-ink transition-colors hover:bg-brass-light"
+                    <motion.div
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.7 }}
+                        className="mx-auto max-w-[1080px] mt-30 mb-14 flex justify-center"
                     >
-                        Submit Request
-                    </button>
-                </motion.div>
+                        <button
+                            type="submit"
+                            className="border border-ink/20 bg-brass px-8 py-3 font-semibold text-ink transition-colors hover:bg-brass-light"
+                        >
+                            Submit Request
+                        </button>
+                    </motion.div>
+                </motion.form>
+                
             </div>
         </section>
     )
