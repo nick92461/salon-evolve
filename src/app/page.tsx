@@ -4,6 +4,7 @@ import Services from "@/components/Services";
 import Stylists from "@/components/Stylists";
 import Pricing from "@/components/Pricing";
 import Visit from "@/components/Visit";
+import Careers from "@/components/Careers";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Services />
       <Pricing />
       <Stylists />
+      <Careers />
       <Visit />
     </>
   );
