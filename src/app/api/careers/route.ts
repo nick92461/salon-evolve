@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     const resume = formData.get("resume") as File;
 
     if (!name || !phone || !email || !resume) {
-        return Response.json({ error: "Missing required fields" }, { status: 400 };)
+        return Response.json({ error: "Missing required fields" }, { status: 400 });
     }
 
     if (name.length > MAX_FIELD_LENGTH || phone.length > MAX_FIELD_LENGTH || email.length > MAX_FIELD_LENGTH) {

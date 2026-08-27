@@ -8,6 +8,7 @@ export default function Form() {
 
     async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
+        const form = e.currentTarget;
         const formData = new FormData(e.currentTarget);
         const response = await fetch("/api/careers", {
             method: "POST",
@@ -15,11 +16,9 @@ export default function Form() {
         });
         if (response.ok) {
             window.alert("Your application has been submitted!");
+            form.reset();
+            setResumeFileName(null);
         }
-    }
-
-    function confirmSubmission() {
-        window.alert("Your application has been submitted!");
     }
 
     return (
