@@ -1,5 +1,6 @@
 "use client";
 
+import { useState} from "react";
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -26,6 +27,8 @@ export default function Nav() {
       return () => window.removeEventListener("scroll", onScroll);
     }, []);
   */
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav
@@ -57,7 +60,31 @@ export default function Nav() {
         >
           {PHONE}
         </a>
+
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden flex flex-col gap-1.5 p-2"
+          aria-label="Toggle menu"
+        >
+          <span className="block h-0.5 w-6 bg-ink"></span>
+          <span className="block h-0.5 w-6 bg-ink"></span>
+          <span className="block h-0.5 w-6 bg-ink"></span>
+        </button>
       </div>
+      {menuOpen && (
+        <div className="absolute top-[76px] left-0 right-0 md:hidden flex flex-col bg-linen border-t border-ink/10">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="px-6 py-4 text-sm text-ink border-b border-ink/10"
+              >
+                {link.label}
+              </Link>
+            ))}
+        </div>
+      )}
     </nav>
   );
 }
