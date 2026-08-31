@@ -23,7 +23,7 @@ export default function ReviewsList({ reviews }: { reviews: GoogleReview[] }) {
 					<h2 className="mb-3 font-display text-4xl">See what our customers think</h2>
 				</motion.div>
 
-				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
 					{reviews.map((review, index) => (
 						<motion.div
 							key={review.author_name + index}
