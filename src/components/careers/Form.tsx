@@ -113,6 +113,17 @@ export default function Form() {
                         
                         
                     </div>
+                    <input
+                        type="checkbox"
+                        id="privacyPolicy"
+                        name="privacyPolicy"
+                        required
+                        className="mt-1"
+                    />
+                    <label htmlFor="privacyPolicy" className="text-sm text-ink">
+                        I consent to Salon Evolve team members using the information I provided to contact me about my application.
+                    </label>
+
                     <motion.div
                         initial={{ opacity: 0, y: 28 }}
                         whileInView={{ opacity: 1, y: 0 }}
