@@ -56,7 +56,7 @@ export default function Nav() {
 
         <a
           href={PHONE_HREF}
-          className="rounded-sm border px-5 py-2.5 text-sm font-semibold duration-300 text-ink"
+          className="hidden md:inline rounded-sm border px-5 py-2.5 text-sm font-semibold duration-300 text-ink"
         >
           {PHONE}
         </a>
@@ -82,7 +82,14 @@ export default function Nav() {
               >
                 {link.label}
               </Link>
+              
             ))}
+            <a
+              href={PHONE_HREF}
+              className="px-6 py-4 text-sm text-ink border-b border-ink/10"
+            >
+              {PHONE}
+            </a>
         </div>
       )}
     </nav>
