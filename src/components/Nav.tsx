@@ -4,13 +4,13 @@ import { useState} from "react";
 import Link from "next/link";
 
 const NAV_LINKS = [
+  { href: "/booking", label: "Book" },
   { href: "/#about", label: "About" },
   { href: "/#services", label: "Services" },
   { href: "/#pricing", label: "Pricing" },
   { href: "/#stylists", label: "Stylists" },
-  { href: "/#visit", label: "Visit" },
-  { href: "/booking", label: "Book" },
-  { href: "/careers", label: "Careers" }
+  { href: "/careers", label: "Careers" },
+  { href: "/#visit", label: "Visit" }
 ];
 
 const PHONE = "(609) 390-9220";
