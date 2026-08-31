@@ -20,7 +20,7 @@ export default function ReviewsList({ reviews }: { reviews: GoogleReview[] }) {
 					className="mb-14 max-w-[640px]"
 				>
 					<p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-brass">Reviews</p>
-					<h2 className="mb-3 font-display text-4xl">See what our customers think</h2>
+					<h2 className="mb-3 font-display text-4xl">See what our customers think.</h2>
 				</motion.div>
 
 				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">

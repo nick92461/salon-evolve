@@ -17,7 +17,7 @@ export default function CareersSection() {
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-brass">
             Join the Team
           </p>
-          <h2 className="mb-3 font-display text-4xl">Interested in joining the team? Click below to fill out an application</h2>
+          <h2 className="mb-3 font-display text-4xl">Interested in joining the team? Click below to fill out an application.</h2>
         </motion.div>
         <motion.div
             initial={{ opacity: 0, y: 28 }}
@@ -30,7 +30,7 @@ export default function CareersSection() {
                 href="/careers"
                 className="border border-ink/20 bg-brass px-8 py-3 font-semibold text-ink transition-colors hover:bg-brass-light"
             >
-                Fill out an application
+                Begin application
             </Link>
         </motion.div>
       </div>

@@ -49,7 +49,18 @@ export default function Time() {
                         className="bg-parchment w-full max-w-[200px]"
                         required
                     />
+                    
                 </div>
+                <input
+                        type="checkbox"
+                        id="cancellationAgreement"
+                        name="cancellationAgreement"
+                        required
+                        className="mt-1"
+                    />
+                    <label htmlFor="cancellationAgreement" className="text-sm text-ink">
+                        I acknowledge that this appointment request is not a confirmed appointment, and I consent to being contacted by a Salon Evolve team member to finalize and confirm appointment scheduling. I also agree to the following cancellation policy: All confirmed appointments must be cancelled within 48 hours of the appointment time to avoid a late cancellation fee.
+                    </label>
                 
             </motion.div>    
             <motion.div

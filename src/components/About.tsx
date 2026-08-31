@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 const STATS = [
   { value: "20+", label: "Years in South Jersey" },
   { value: "4", label: "Stylists on staff" },
-  { value: "1", label: "Locations" }
 ];
 
 export default function About() {
