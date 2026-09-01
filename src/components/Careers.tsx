@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function CareersSection() {
   return (
-    <section id="careers" className="scroll-mt-[76px] bg-parchment px-6 py-28 sm:px-12">
+    <section id="careers" className="scroll-mt-[76px] bg-linen px-6 py-28 sm:px-12">
       <div className="mx-auto grid max-w-[1080px]">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
