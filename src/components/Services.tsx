@@ -1,20 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useRef, useEffect } from "react";
-
+import { useState, useRef, useLayoutEffect } from "react";
 
 type Service = {
-  name: string;
-  price: string;
-  description?: string;
-  footnote?: string;
+	name: string;
+	price: string;
+	description?: string;
+	footnote?: string;
 };
 
 type Category = {
-  name: string;
-  note?: string;
-  services: Service[];
+	name: string;
+	note?: string;
+	services: Service[];
 };
 
 const CATEGORIES: Category[] = [
@@ -75,117 +74,142 @@ const CATEGORIES: Category[] = [
 	},
 ];
 
-
 export default function Services() {
-  const [expanded, setExpanded] = useState(false);
-  const [fullHeight, setFullHeight] = useState(0);
-  const contentRef = useRef<HTMLDivElement>(null);
+	const [expanded, setExpanded] = useState(false);
+	const [isCollapsing, setIsCollapsing] = useState(false);
+	const [frozenRect, setFrozenRect] = useState({ top: 0, left: 0, width: 0, height: 0 });
+	const contentRef = useRef<HTMLDivElement>(null);
+	const prevIsCollapsing = useRef(false);
 
-  useEffect(() => {
-    if (contentRef.current) {
-      setFullHeight(contentRef.current.scrollHeight);
-    }
-  }, []);
+	useLayoutEffect(() => {
+		if (prevIsCollapsing.current && !isCollapsing) {
+			window.scrollBy({ top: -(frozenRect.height - 900), behavior: "instant" });
+		}
+		prevIsCollapsing.current = isCollapsing;
+	}, [isCollapsing, frozenRect.height]);
 
-  return (
-    <section id="services" className="scroll-mt-[76px] bg-parchment px-6 py-28 sm:px-12">
-      <div className="mx-auto max-w-[1080px]">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7 }}
-          className="mb-14 max-w-[640px]"
-        >
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-brass">
-            Service menu
-          </p>
-          <h2 className="mb-3 font-display text-4xl">Services & pricing</h2>
-        </motion.div>
+	function handleCollapse() {
+		if (!contentRef.current) return;
+		const rect = contentRef.current.getBoundingClientRect();
+		setFrozenRect({ top: rect.top, left: rect.left, width: rect.width, height: rect.height });
+		setIsCollapsing(true);
+	}
 
-        <div className="mb-14 max-w-[640px] border-l-2 border-brass bg-white p-5 text-sm text-taupe">
-          When requesting a chemical service, please also schedule a finishing service, such as a Blow Dry &amp; Style or Haircut &amp; Blow Dry.
-        </div>
+	const categoryList = CATEGORIES.map((category, categoryIndex) => (
+		<motion.div
+			key={category.name}
+			initial={{ opacity: 0, y: 28 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			viewport={{ once: true, amount: 0.2 }}
+			transition={{ duration: 0.6, delay: categoryIndex * 0.08 }}
+			className="mb-12"
+		>
+			<h3 className="mb-2 font-display text-2xl">{category.name}</h3>
+			<div className="mb-6 h-px bg-ink/10" />
 
-        <div
-          ref={contentRef}
-          style={{ maxHeight: expanded ? fullHeight : 900 }}
-          className="relative overflow-hidden transition-[max-height] duration-700 ease-in-out"
-        >  
-          {CATEGORIES.map((category, categoryIndex) => (
-            <motion.div
-              key={category.name}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.08 }}
-              className="mb-12"
-            >
-              <h3 className="mb-2 font-display font-bold text-2xl">{category.name}</h3>
-              <div className="mb-6 h-px bg-ink/10" />
+			{category.note && (
+				<p className="mb-4 -mt-2 text-sm italic text-taupe">{category.note}</p>
+			)}
 
-              {category.note && (
-                <p className="mb-4 -mt-2 text-sm italic text-taupe">{category.note}</p>
-              )}
+			{category.services.map((service, serviceIndex) => (
+				<div
+					key={service.name}
+					className={`py-5 ${
+						serviceIndex === category.services.length - 1 ? "" : "border-b border-ink/10"
+					}`}
+				>
+					<div className="flex items-baseline justify-between gap-4">
+						<h4 className="font-semibold">{service.name}</h4>
+						<span className="whitespace-nowrap font-display text-brass">{service.price}</span>
+					</div>
 
-              {category.services.map((service, serviceIndex) => (
-                <div
-                  key={service.name}
-                  className={`py-5 ${
-                    serviceIndex === category.services.length -1 ? "" : "border-b border-ink/10"
-                  }`}
-                >
-                  <div className="flex items-baseline justify-between gap-4">
-                    <h4 className="font-semibold">{service.name}</h4>
-                    <span className="whitespace-nowrap font-display text-brass">{service.price}</span>
-                  </div>
+					{service.description && (
+						<p className="mt-1 max-w-[58ch] text-sm text-taupe">{service.description}</p>
+					)}
+					{service.footnote && (
+						<p className="mt-2 text-xs italic text-taupe">{service.footnote}</p>
+					)}
+				</div>
+			))}
+		</motion.div>
+	));
 
-                  {service.description && (
-                    <p className="mt-1 max-w-[58ch] text-sm text-taupe">{service.description}</p>
-                  )}
-                  {service.footnote && (
-                    <p className="mt-2 text-xs italic text-taupe">{service.footnote}</p>
-                  )}
-                </div>
-              ))}
-            </motion.div>
-          ))}
+	return (
+		<section id="services" className="scroll-mt-[76px] bg-parchment px-6 py-28 sm:px-12">
+			<div className="mx-auto max-w-[1080px]">
+				<motion.div
+					initial={{ opacity: 0, y: 28 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, amount: 0.3 }}
+					transition={{ duration: 0.7 }}
+					className="mb-14 max-w-[640px]"
+				>
+					<p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-brass">
+						Service menu
+					</p>
+					<h2 className="mb-3 font-display text-4xl">Services & pricing</h2>
+				</motion.div>
 
-          {!expanded && (
-            <div className="absolute inset-x-0 bottom-0 flex h-48 items-end justify-center bg-gradient-to-t from-parchment via-parchment/90 to-transparent pb-6">
-              <button
-                onClick={() => setExpanded(true)}
-                aria-label="Show full menu"
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-ink/20 bg-parchment text-xl text-ink shadow-md transition-colors hover:bg-brass-light"
-              >
-                ↓
-              </button>
-            </div>
-          )}
+				<div className="mb-14 max-w-[640px] border-l-2 border-brass bg-white p-5 text-sm text-taupe">
+					When requesting a chemical service, please also schedule a finishing service, such as a Blow Dry &amp; Style or Haircut &amp; Blow Dry.
+				</div>
 
-          
-        </div>
-        {expanded && (
-            <div className="flex justify-center pt-4">
-              <button
-                onClick={() => {
-                  setExpanded(false);
-                  contentRef.current?.addEventListener(
-                    "transitionend",
-                    () => {
-                      document.getElementById("stylists")?.scrollIntoView({ behavior: "smooth" });
-                    },
-                    { once: true }
-                  );
-                }}
-                aria-label="Collapse menu"
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-ink/20 bg-parchment text-xl text-ink shadow-md transition-colors hover:bg-brass-light"
-              >
-                ↑
-              </button>
-            </div>
-          )}
-      </div>
-    </section>
-  );
+				{isCollapsing ? (
+					<>
+						<div style={{ height: frozenRect.height }} />
+						<motion.div
+							style={{
+								position: "fixed",
+								top: frozenRect.top,
+								left: frozenRect.left,
+								width: frozenRect.width,
+								overflow: "hidden",
+							}}
+							initial={{ height: frozenRect.height }}
+							animate={{ height: 900 }}
+							transition={{ duration: 0.7, ease: "easeInOut" }}
+							onAnimationComplete={() => {
+								setIsCollapsing(false);
+								setExpanded(false);
+							}}
+							className="bg-parchment"
+						>
+							{categoryList}
+						</motion.div>
+					</>
+				) : (
+					<div
+						ref={contentRef}
+						className={`relative overflow-hidden ${expanded ? "" : "max-h-[900px]"}`}
+					>
+						{categoryList}
+
+						{!expanded && (
+							<div className="absolute inset-x-0 bottom-0 flex h-48 items-end justify-center bg-gradient-to-t from-parchment via-parchment/90 to-transparent pb-6">
+								<button
+									onClick={() => setExpanded(true)}
+									aria-label="Show full menu"
+									className="flex h-12 w-12 items-center justify-center rounded-full border border-ink/20 bg-parchment text-xl text-ink shadow-md transition-colors hover:bg-brass-light"
+								>
+									↓
+								</button>
+							</div>
+						)}
+
+						{expanded && (
+							<div className="flex justify-center pt-4">
+								<button
+									onClick={handleCollapse}
+									aria-label="Collapse menu"
+									className="flex h-12 w-12 items-center justify-center rounded-full border border-ink/20 bg-parchment text-xl text-ink shadow-md transition-colors hover:bg-brass-light"
+								>
+									↑
+								</button>
+							</div>
+						)}
+					</div>
+				)}
+			</div>
+		</section>
+	);
 }
