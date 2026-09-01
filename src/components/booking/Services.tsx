@@ -6,9 +6,9 @@ import Image from "next/image";
 const SERVICES = [
     { name: "Single-Process Color", description: "All-Over Color, Root Color Touch-Up, Root Color Touch-Up + Foils" },
     { name: "Color Enhancement", description: "Gloss/Toner" },
-    { name: "Highlights/Dimensional Color", description: "Partial Highlights, Full Highlights, Balayage" },
-    { name: "Haircutting/Styling", description: "Haircut, Haircut w/ Blow Dry, Blow Dry w/ Style, Updo Styling" },
-    { name: "Conditioning/Hair Treatments", description: "Deep Conditioning, Olaplex, Malibu, KeraTherapy" },
+    { name: "Highlights & Dimensional Color", description: "Partial Highlights, Full Highlights, Balayage" },
+    { name: "Haircutting & Styling", description: "Haircut, Haircut w/ Blow Dry, Blow Dry w/ Style, Updo Styling" },
+    { name: "Conditioning & Hair Treatments", description: "Deep Conditioning, Olaplex, Malibu, KeraTherapy" },
     { name: "Texturizing", description: "Permanent Wave" },
     { name: "Facial Waxing", description: "Eyebrow, Chin, Lip" },
     { name: "Consultation", description: "" },
