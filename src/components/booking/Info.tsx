@@ -20,7 +20,7 @@ export default function Info() {
                     Request an appointment
                 </p>
                 <h2 className="mb-3 font-display text-4xl">Provide your contact info so we can reach you</h2>
-
+                
             </motion.div>
         </div>
         <div className="mx-auto max-w-[1080px]">
@@ -69,7 +69,9 @@ export default function Info() {
                         placeholder="Enter your email"
                         required
                     />
+                    <p className="mt-6 max-w-[46ch] text-md text-parchment/80">After your request is submitted, a team member will reach out to you to confirm appointment details.</p>
                 </div>
+                
             </motion.div>
         </div>
     </section>
